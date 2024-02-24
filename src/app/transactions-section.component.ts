@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -7,12 +8,12 @@ import { ShyftApiService } from './shyft-api.service';
 
 @Component({
   selector: 'monorepo-transactions-section',
-  imports: [MatTableModule, MatCard],
+  imports: [MatTableModule, MatCard, DatePipe],
   standalone: true,
   template: `
     <mat-card
-      class="w-[400px] px-4 py-8"
-      style="background-color: #EEEEEE; border-bottom: 2px solid #7733ff;"
+      class="w-[500px] px-4 py-8"
+      style="background-color: #EEEEEE; border-bottom: 2px solid #7b1fa2;"
     >
       <h2 class="text-center text-3xl mb-4">Historial de Transacciones</h2>
 
@@ -34,7 +35,9 @@ import { ShyftApiService } from './shyft-api.service';
 
           <ng-container matColumnDef="timestamp">
             <th mat-header-cell *matHeaderCellDef>Timestamp</th>
-            <td mat-cell *matCellDef="let element">{{ element.timestamp }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.timestamp | date: 'dd/MM/yy' }}
+            </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

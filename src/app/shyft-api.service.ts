@@ -5,8 +5,17 @@ import { map, of } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ShyftApiService {
   private readonly _httpClient = inject(HttpClient);
-  private readonly _header = { 'x-api-key': 'SgRsoSNeZcEAYqUs' };
+  private readonly _key = 'SgRsoSNeZcEAYqUs'; //ponerlo en enviroments igual que el resto...
+  private readonly _header = { 'x-api-key': this._key };
   private readonly _mint = '7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs';
+
+  getEndpoint() {
+    const url = new URL('https://rpc.shyft.to');
+
+    url.searchParams.set('api_key', this._key);
+
+    return url.toString();
+  }
 
   getBalance(publicKey: string | undefined | null) {
     if (!publicKey) {
@@ -62,5 +71,14 @@ export class ShyftApiService {
         },
       )
       .pipe(map((response) => response.result));
+  }
+
+  //Integracion con rpc de shyft
+  getShyftRpc() {
+    const url = new URL('https://rpc.shyft.to');
+
+    url.searchParams.set('api_key', this._key);
+
+    return url.toString();
   }
 }
