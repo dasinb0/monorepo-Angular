@@ -24,24 +24,62 @@ import { ShyftApiService } from './shyft-api.service';
       } @else {
         <table mat-table [dataSource]="transactions() ?? []">
           <ng-container matColumnDef="type">
-            <th mat-header-cell *matHeaderCellDef>Type</th>
-            <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="background-color: #f0f0f0; color: black; border-bottom: 1px solid #7b1fa2;"
+            >
+              Type
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              style="background-color: #f0f0f0; color: black; black; border-bottom: 1px solid #7b1fa2;"
+            >
+              {{ element.type }}
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef>Status</th>
-            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="background-color: #f0f0f0; color: black; border-bottom: 1px solid #7b1fa2;"
+            >
+              Status
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              style="background-color: #f0f0f0; color: black; black; border-bottom: 1px solid #7b1fa2;"
+            >
+              {{ element.status }}
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="timestamp">
-            <th mat-header-cell *matHeaderCellDef>Timestamp</th>
-            <td mat-cell *matCellDef="let element">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              style="background-color: #f0f0f0; color: black; border-bottom: 1px solid #7b1fa2;"
+            >
+              Timestamp
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              style="background-color: #f0f0f0; color: black; black; border-bottom: 1px solid #7b1fa2;"
+            >
               {{ element.timestamp | date: 'dd/MM/yy' }}
             </td>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            style="border-bottom: 1px solid #7b1fa2;"
+          ></tr>
         </table>
       }
     </mat-card>
