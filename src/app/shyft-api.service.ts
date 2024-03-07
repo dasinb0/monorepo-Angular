@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { map, of, tap } from 'rxjs';
+import { environment } from 'src/environment/environments';
 
 @Injectable({ providedIn: 'root' })
 export class ShyftApiService {
   private readonly _httpClient = inject(HttpClient);
-  private readonly _key = 'SgRsoSNeZcEAYqUs'; //ponerlo en enviroments igual que el resto...
+  private readonly _key = environment.shyftApiKey;
   private readonly _header = { 'x-api-key': this._key };
-  private readonly _mint = '7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs';
+  private readonly _mint = environment.shyftMint;
 
   getEndpoint() {
     const url = new URL('https://rpc.shyft.to');

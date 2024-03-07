@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 
+//Mover a una interface
 export interface TransferFormModel {
   memo: string | null;
   amount: number | null;
@@ -22,6 +23,7 @@ export interface TransferFormModel {
   } | null;
 }
 
+//Mover a una interface
 export interface transferFormPayLoad {
   memo: string;
   amount: number;
